@@ -1,0 +1,37 @@
+file = open('romeo.txt')
+
+#Stripping blanks, making a list of words. Num of lists = num of lines
+#Result in a list of lists
+stanza = list()
+for line in file:
+    line = line.rstrip()
+    list_of_line = line.split()
+    stanza.append(list_of_line)
+
+#Extracting word from the list of lists and adding them to a separate list
+words = list()
+for single_line in stanza:
+    for word in single_line:
+        words.append(word)
+
+count = dict()
+#Creating a dictionary of word and adding a counter to it
+for word in words:
+    count[word] = count.get(word,0)+1
+
+#Sort by descending count utilizing tuples for temporary variables
+rev = list()
+for word,num in count.items():
+    temp = (num,word)
+    rev.append(temp)
+
+
+ordered = sorted(rev, reverse= True)
+#Sorting and other housekeeping tools
+ordered_list_of_words = list()
+for num,word in ordered:
+    temp = word,num
+    ordered_list_of_words.append(temp)
+
+for word,num in ordered_list_of_words:
+    print(word,num)
