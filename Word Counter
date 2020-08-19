@@ -1,0 +1,42 @@
+file = open('romeo.txt')
+
+list1 = list()
+list2 = list()
+dict1 = dict()
+list3 = list()
+list4 = list()
+
+def list_of_lists():
+    for line in file:
+        line = line.rstrip()
+        lines = line.split()
+        list1.append(lines)
+    return list1
+
+def extract_words():
+    for lines in list1:
+        for word in lines:
+            list2.append(word)
+    return list2
+
+def count_of_words():
+    for word in list2:
+        dict1[word] = dict1.get(word,0) + 1
+    return dict1
+
+def ordered_counts():
+    for word,num in dict1.items():
+        temp = num,word
+        list3.append(temp)
+    list4 = sorted(list3,reverse = True)
+    for num,word in list4:
+        print(word,num)
+
+
+def main():
+    list_of_lists()
+    extract_words()
+    count_of_words()
+    ordered_counts()
+
+main()
