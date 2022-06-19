@@ -1,0 +1,35 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jun 19 15:01:08 2022
+
+@author: Metal
+"""
+import urllib.request,urllib.error,urllib.parse
+from bs4 import BeautifulSoup
+
+def link_follower(url):
+
+    data = urllib.request.urlopen(url)
+    soup = BeautifulSoup(data,"html.parser")
+    
+    tags = soup('a')
+    
+    list_url = list()
+    
+    for tag in tags:
+        list_url.append(tag.get('href',None))
+    return list_url[17]
+
+url1 = input("Enter the first URL - ")
+
+result_1 = link_follower(url1)
+
+times = int(input("Enter the number of times to follow links - "))
+
+
+for i in range(2,times):
+    exec(f'result_{i} = link_follower(result_{i-1})')
+
+exec(f'print(link_follower(result_{times-1}))')
+
+exec(f'print(link_follower(result_{times-1}).split("_")[2].split(".")[0])')
