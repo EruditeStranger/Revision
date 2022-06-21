@@ -1,0 +1,22 @@
+import json 
+import urllib,urllib.error,urllib.parse
+
+
+url = input("Enter the JSON url - ")
+data = urllib.request.urlopen(url)
+
+info = json.load(data)
+
+contents = list()
+
+for a,b in info.items():
+    contents.append(b)
+
+total = 0
+
+for a in contents[1]:
+    total += a["count"]
+
+print(total)
+    
+    
