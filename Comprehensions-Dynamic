@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jun 29 16:21:32 2022
+
+@author: Metal
+"""
+from random import randint
+
+list_of_integers = list()
+for i in range(1,10):
+    list_of_integers.append(randint(1, 20))
+
+# =============================================================================
+# for integer in list_of_integers:
+#     print(integer**2)
+# =============================================================================
+
+print([integer**2 for integer in list_of_integers])
+
+#### Cartesian Product ####
+
+def create_list():
+    created_list = list()
+    print("Enter a non-integer to finish list")
+    while True:
+        try:
+            user_input = int(input("Enter list element: "))
+            created_list.append(user_input)
+        except ValueError:
+            break
+    return created_list
+try:
+    num_of_lists = int(input("Enter the number of lists: "))
+except ValueError:
+    print("The number of lists has to be an integer")
+    
+for i in range(0,num_of_lists):
+    exec(f'list_{i} = list()')
+    exec(f'list_{i} = create_list()')
+
+exec(f'cartesian_product = [(a,b) for a in list_{num_of_lists - 1} for b in list_{num_of_lists - 2}]')
+
+exec('print(cartesian_product)')
