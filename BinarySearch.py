@@ -13,5 +13,9 @@ def binarySearch(lower,upper,k):
             break
     return count
 
-print(binarySearch(1,100,49))
+lower = input("enter lower bound")
+upper = input("enter upper bound")
+k = input("enter key to be searched")
+
+print(binarySearch(lower,upper,k))
 
