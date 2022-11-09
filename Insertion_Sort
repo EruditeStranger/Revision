@@ -1,0 +1,20 @@
+def insertion_into_sorted_module(arr,x):
+    arr.append(x)
+    j = len(arr)-1
+    arr[j-1]
+    while j>=0 and x<arr[j-1]:
+        arr[j] = arr[j-1]
+        arr[j-1] = x
+        j-=1
+    return arr
+
+def insertion_sort(unsorted_array):
+    sorted_array = list()
+    for a in range(0,len(unsorted_array)):
+        if a == 0:
+            sorted_array.append(unsorted_array[a])
+        else:
+            insertion_into_sorted_module(sorted_array,unsorted_array[a])
+    return sorted_array
+
+print(insertion_sort([1,5,2,7,8,2,11,5,3]))
